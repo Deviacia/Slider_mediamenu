@@ -54,12 +54,17 @@ button {
         width: 500px;
         height: inherit;
 
-        display: flex;
+        // position: relative;
 
         & img {
             width: inherit;
             height: inherit;
             object-fit: contain;
+            display: block;
+
+            position: absolute;
+
+            transform-origin: 0 100%;
         }
     }
 
@@ -73,8 +78,8 @@ button {
         background: #ffffff;
         // border: solid 1px #d6d6d6;
 
-        &__left,
-        &__right {
+        &__next,
+        &__prev {
             z-index: 100;
 
             width: 50px;
@@ -85,9 +90,17 @@ button {
             align-items: center;
         }
 
-        &__left {
+        &__next {
+            float: right;
+        }
+
+        &__prev {
             float: left;
             position: relative;
+
+            >img {
+                transform: rotate(180deg);
+            }
 
             &::after {
                 content: "";
@@ -99,10 +112,6 @@ button {
                 height: inherit;
                 background: #fff;
             }
-        }
-
-        &__right {
-            float: right;
         }
     }
 }

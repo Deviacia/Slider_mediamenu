@@ -47,12 +47,14 @@ button {
   float: right;
   width: 500px;
   height: inherit;
-  display: flex;
 }
 .banner-section img {
   width: inherit;
   height: inherit;
   object-fit: contain;
+  display: block;
+  position: absolute;
+  transform-origin: 0 100%;
 }
 .banner-controller {
   position: absolute;
@@ -62,7 +64,7 @@ button {
   height: 50px;
   background: #ffffff;
 }
-.banner-controller__left, .banner-controller__right {
+.banner-controller__next, .banner-controller__prev {
   z-index: 100;
   width: 50px;
   height: 50px;
@@ -70,18 +72,21 @@ button {
   justify-content: center;
   align-items: center;
 }
-.banner-controller__left {
+.banner-controller__next {
+  float: right;
+}
+.banner-controller__prev {
   float: left;
   position: relative;
 }
-.banner-controller__left::after {
+.banner-controller__prev > img {
+  transform: rotate(180deg);
+}
+.banner-controller__prev::after {
   content: "";
   position: absolute;
   right: 0;
   width: 1px;
   height: inherit;
   background: #fff;
-}
-.banner-controller__right {
-  float: right;
 }
