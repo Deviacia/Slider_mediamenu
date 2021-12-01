@@ -13,13 +13,16 @@ button {
   background: #C3002F;
   color: #ffffff;
 }
+button:disabled {
+  background: #920023;
+}
 
 .wrapper {
   width: 750px;
   margin: 0 auto;
 }
 
-.banner {
+.slider {
   overflow: hidden;
   position: relative;
   width: 750px;
@@ -27,7 +30,7 @@ button {
   background: #fff;
   border: solid 1px #d6d6d6;
 }
-.banner-static {
+.slider-static {
   z-index: 100;
   float: left;
   width: 250px;
@@ -37,25 +40,34 @@ button {
   justify-content: center;
   align-items: center;
 }
-.banner-static-logo {
+.slider-static-logo {
   width: 100px;
   height: auto;
   object-fit: contain;
 }
-.banner-section {
+.slider-container {
+  width: 500px;
+  height: inherit;
+  position: relative;
+  overflow: hidden;
+}
+.slider-track {
   z-index: 50;
   float: right;
   width: 500px;
   height: inherit;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  transition: all 0.5s;
 }
-.banner-section img {
+.slider-track img {
   width: inherit;
   height: inherit;
   object-fit: contain;
-  display: block;
   transform-origin: 0 100%;
 }
-.banner-controller {
+.slider-controller {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -63,25 +75,26 @@ button {
   height: 50px;
   background: #ffffff;
 }
-.banner-controller__next, .banner-controller__prev {
+.slider-controller__next, .slider-controller__prev {
   z-index: 100;
   width: 50px;
   height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
-.banner-controller__next {
+.slider-controller__next {
   float: right;
 }
-.banner-controller__prev {
+.slider-controller__prev {
   float: left;
   position: relative;
 }
-.banner-controller__prev > img {
+.slider-controller__prev > img {
   transform: rotate(180deg);
 }
-.banner-controller__prev::after {
+.slider-controller__prev::after {
   content: "";
   position: absolute;
   right: 0;

@@ -12,6 +12,10 @@ button {
     border: none;
     background: #C3002F;
     color: #ffffff;
+
+    &:disabled {
+        background: #920023;
+    }
 }
 
 .wrapper {
@@ -19,7 +23,7 @@ button {
     margin: 0 auto;
 }
 
-.banner {
+.slider {
     overflow: hidden;
     position: relative;
 
@@ -47,20 +51,33 @@ button {
         }
     }
 
-    &-section {
+    &-container {
+        width: 500px;
+        height: inherit;
+
+        position: relative;
+        overflow: hidden;
+    }
+
+    &-track {
         z-index: 50;
         float: right;
 
         width: 500px;
         height: inherit;
 
-        // position: relative;
+        display: flex;
+        flex-direction: row;
+
+        position: absolute;
+        transition: all 0.5s;
 
         & img {
+            // position: absolute;
+
             width: inherit;
             height: inherit;
             object-fit: contain;
-            display: block;
 
             transform-origin: 0 100%;
         }
@@ -86,6 +103,8 @@ button {
             display: flex;
             justify-content: center;
             align-items: center;
+
+            position: relative;
         }
 
         &__next {

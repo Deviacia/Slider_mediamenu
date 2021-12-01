@@ -7,14 +7,16 @@ html(lang="en")
         title Slider training
     body
         .wrapper
-            .banner
-                a(href="#"): .banner-static
-                    img(src="src/img/logo.png", alt="logo").banner-static-logo
-                .banner-section
-                    img.slide(src="src/img/slider/1.png", alt="Nissan GT-R Black photo")
-                    img.slide(src="src/img/slider/2.png", alt="Nissan GT-R Black photo")
-                .banner-controller
-                    button.banner-controller__next: img(src="src/img/ico/arrow.svg", alt="<")
-                    button.banner-controller__prev: img(src="src/img/ico/arrow.svg", alt=">")
+            .slider
+                a(href="#"): .slider-static
+                    img(src="src/img/logo.png", alt="logo").slider-static-logo
+                .slider-container
+                    .slider-track
+                        img.slider-item(src="src/img/slider/1.png", alt="Nissan GT-R Black photo")
+                        img.slider-item(src="src/img/slider/2.png", alt="Nissan GT-R Black photo")
+                        img.slider-item(src="src/img/slider/3.png", alt="Nissan GT-R Black photo")
+                .slider-controller
+                    button.slider-controller__next: img(src="src/img/ico/arrow.svg", alt="<")
+                    button.slider-controller__prev: img(src="src/img/ico/arrow.svg", alt=">")
 
         script(src="src/script/script.js") 

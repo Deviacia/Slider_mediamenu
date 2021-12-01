@@ -1,58 +1,48 @@
 'use strict'
 
-// Get elements
-const slider = document.querySelectorAll('.banner-section > .slide');
-const nextSlide = document.querySelector('.banner-controller__next');
-const prevSlide = document.querySelector('.banner-controller__prev');
+let position = 0;
 
-const zeroSlide = 0;
-const slideCount = 2; // 0 = 1, 1 = 2, 2 = 3 ...
+const slidesToShow = 1;
+const slidesToScroll = 1;
 
-// Get images array
-let currentSlideIndex = 0;
-let slideIndex = slider[currentSlideIndex];
-let lastEl = slider[slider - 1];
+const container = document.querySelector('.slider-container');
+const track = document.querySelector('.slider-track');
+const item = document.querySelector('.slider-item');
+const itemsCount = document.querySelectorAll('.slider-track > .slider-item').length;
+
+const nextBtn = document.querySelector('.slider-controller__next');
+const prevBtn = document.querySelector('.slider-controller__prev');
+
+const itemWidth = container.offsetWidth / slidesToShow;
+const movePosition = slidesToScroll * itemWidth;
 
 
-// Check button click
-nextSlide.addEventListener('click', onChangeSlideNext);
-prevSlide.addEventListener('click', onChangeSlidePrev);
+// Detect buttons press
+nextBtn.addEventListener('click', () => {
+    position -= movePosition;
+    setPosition();
+    checkBtns();
+})
 
-// Next slide
-function onChangeSlideNext() {
-    slideIndex = slider[currentSlideIndex];
-    // currentSlideIndex++;
-    
-    if (currentSlideIndex >= slideCount && currentSlideIndex <= slideCount) {
-        slideIndex = slider[0];
-        currentSlideIndex = 1;
-    }
+prevBtn.addEventListener('click', () =>{
+    position += movePosition;
+    setPosition();
+    checkBtns();
+})
 
-    else {
-        currentSlideIndex++;
-    }
-    
-    console.log(currentSlideIndex);
-    console.log(slideIndex);
+// Change slides function
+const setPosition = () => {
+    track.style.transform = `translateX(${position}px)`;
 }
 
-// Prev slide
-function onChangeSlidePrev() {
-    // currentSlideIndex--;
-    slideIndex = slider[currentSlideIndex];
-
-    if (currentSlideIndex > zeroSlide || currentSlideIndex < slideCount) {
-        currentSlideIndex--;
-    }
-
-    // else {
-    //     slideIndex = lastEl;
-    // }
-
-
-    console.log(currentSlideIndex);
-    console.log(slideIndex);
+const checkBtns = () => {
+    nextBtn.disabled = position <= - (itemsCount - slidesToShow) * itemWidth
+    prevBtn.disabled = position === 0
 }
 
-console.log(slideIndex);
-console.log(slider);
+checkBtns();
+
+console.log(typeof (position))
+console.log(typeof (itemsCount))
+console.log(typeof (slidesToShow))
+console.log(typeof (itemWidth))
